@@ -1,0 +1,74 @@
+hostname R12-R1
+no ip domain-lookup
+ena secret class
+line console 0
+password cisco
+login
+logging synchro
+line vty 0 4
+password cisco
+login
+logging synchro
+exi
+banner motd "baner :0"
+int g0/0/1
+ip addr 192.168.12.1 255.255.255.0
+no sh
+int s0/1/0
+clock rate 128000
+ip addr 10.1.12.1 255.255.255.252
+no sh
+int s0/1/1
+ip addr 10.3.12.1 255.255.255.252
+no sh
+
+R2________________________________________________________
+
+hostname R12-R2
+no ip domain-lookup
+ena secret class
+line console 0
+password cisco
+login
+logging synchro
+line vty 0 4
+password cisco
+login
+logging synchro
+exi
+banner motd "baner :0"
+int g0/0/0
+ip addr 192.168.2.12 255.255.255.0
+no sh
+int s0/1/0
+ip addr 10.1.12.2 255.255.255.252
+no sh
+int s0/1/1
+clock rate 128000
+ip addr 10.2.12.2 255.255.255.252
+no sh
+
+R3_____________________________________________________-
+hostname R12-R3
+no ip domain-lookup
+ena secret class
+line console 0
+password cisco
+login
+logging synchro
+line vty 0 4
+password cisco
+login
+logging synchro
+exi
+banner motd "baner :0"
+int g0/0/1
+ip addr 192.168.112.1 255.255.255.0
+no sh
+int s0/1/0
+clock rate 128000
+ip addr 10.3.12.2 255.255.255.252
+no sh
+int s0/1/1
+ip addr 10.2.12.1 255.255.255.252
+no sh
